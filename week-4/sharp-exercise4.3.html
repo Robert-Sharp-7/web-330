@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignment 4.3</title>
+
+    <!-- jQuery reference -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+    <h4>HTTP DELETE Request</h4>
+
+    <button id="delete1">Delete Security User</button>
+    <!--using the button# hot key is very convenient-->
+    
+<script>
+
+    $(function() {
+
+        $("delete1").click(function() {
+
+            $.ajax({
+                url: 'http://httpbin.org/delete',
+                dataType: 'json',
+                type: 'DELETE',
+                data: { username: 'UserAdmin', password: 'Passw0rd', email: 'yourname@me.net'},
+                success: function(data, status) {
+                    console.log('Username: ' + data.form.username + 
+                    '\nPassword: ' + data.form.password + 
+                    '\nEmail: ' + data.form.email + 
+                    '\nStatus: ' + status)
+                } //put on different lines to mimic html output
+            })
+        })
+    });
+
+</script>
+
+</body>
+</html>

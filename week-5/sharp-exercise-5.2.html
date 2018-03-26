@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise 5.2 - The Proxy Pattern</title>
+
+    <!-- jquery Reference Library -->
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<!-- Code Attribution
+    ============================================
+    ; Title: Exercise 5.2
+    ; Author: Professor Krasso
+    ; Date: 25 March 2018
+    ; Modified By: Robert Sharp
+    ; Description: This program demonstrates the
+    ; use of the Proxy Pattern
+    ===========================================
+-->
+</head>
+<body>
+    <!--navbar, and styling-->
+    <nav class="navbar navbar-dark bg-dark">
+        <a href="#" class="navbar-brand">Home</a>
+    </nav>
+<br /><br />
+<div class="container">
+    <div class="row">
+        <!-- bootstrap style table-->
+        <div class="col-md-12">
+            <h2>Exercise 5.2 - The Proxy Pattern</h2>
+
+            <button class="btn btn-primary" id="btnPreviewProxy">Preview Proxy</button>
+            
+            <br />
+            <!--span tag for the Preview Proxy button-->
+            <span id="spanProxyResults"></span>
+        
+        </div>
+    </div>
+</div>
+<script>
+    $(function() {
+
+        var car = {
+            //variable to hold my unique values
+            make: "Toyota",
+            model: "Corolla",
+            display: function() {
+                $("#spanProxyResults").html("");
+                    //replaces the appended data each time the button is clicked
+                $("#spanProxyResults").append("<br />Make: " + this.make + "<br />" + "Model: " + this.model);
+
+            }
+
+        };
+
+        $("btnPreviewProxy").click($.proxy(car, "display"));
+        //this is to use the display function for the car variable
+
+
+    });
+</script>
+
+
+</body>
+</html>

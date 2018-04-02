@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!--
+============================================
+; Title: Assignment 6.2
+; Author: Professor Krasso
+; Date: 01 April 18
+; Modified By: Robert Sharp
+; Description: This program demonstrates 
+; view model function objects.
+;===========================================
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Exercise 6.2</title>
+
+    <!-- Stylesheet - Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <!-- JavaScript Libraries -->
+    <script src="../knockout-3.4.2.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <ul class="navbar-nav">
+        <li class="nav-item active">
+            <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Contact Us</a>
+        </li>
+    </ul>
+</nav>
+    
+<div role="main" class="container">
+
+    <br /><br />
+    
+<h2>Person View Model Example</h2>
+    <div class="form-group">
+        <label for="txtFirstName">First Name:</label>
+        <input type="text" class="form-control alert-warning" data-bind="value: firstName" id="txtFirstName"/>
+    </div>
+    
+    <div class="form-group">
+        <label for="txtLastName">Last Name:</label>
+        <input type="text" class="form-control alert-warning" data-bind="value: lastName" id="txtLastName"/>
+    </div>
+
+    <div class="form-group">
+        <label for="txtEmail">Email:</label>
+        <input type="text" class="form-control alert-warning" data-bind="value: email" id="txtEmail">
+    </div>
+</div>
+    
+    
+
+<script>
+
+function PersonViewModel() {
+    //this function can also be created using an object literal
+    this.firstName = ko.observable("Rick");
+    this.lastName = ko.observable("Sanchez");
+    this.email = ko.observable("c137@rick.mail")
+    }
+    
+    ko.applyBindings(new PersonViewModel());
+
+</script>
+
+</body>
+</html>

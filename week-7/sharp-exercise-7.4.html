@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>7.4 Other Knockout Bindings</title>
+
+    <!-- Stylesheet - Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <!-- JavaScript Libraries -->
+    <script src="../knockout-3.4.2.js"></script>
+</head>
+<body>
+<!--Professor Krasso's Navbar template -->
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contact Us</a>
+            </li>
+        </ul>
+    </nav>
+
+<div class="container" role="main">
+    <br/><br/>
+        
+    <h2>JavaScript Tutorial Table</h2>
+        
+    <!--table of titled and priced textbooks-->
+<table class="table table-light table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Link</th>
+        </tr>
+    </thead>
+        
+<tbody data-bind="foreach: tutorials">
+    <!-- data is bound to three observable array properties-->
+    <tr>
+        <td data-bind="text: title"></td>
+        <td data-bind="text: desc"></td>
+        <td> <a data-bind="attr: {href: url}" target="__blank">url</a></td>
+        <!-- assigned the third column the url the href attribute using attr-->
+    </tr>
+        
+</tbody>
+</table>
+        
+
+<script type="text/javascript">
+//tutorial view model
+//data is in observable array
+
+function TutorialViewModel() {
+    this.tutorials = ko.observableArray([
+            {title: "'if' binding", desc: "Causes sections to appear in the DOM if a specific condition is met.", url: ko.observable("http://knockoutjs.com/documentation/if-binding.html")},
+            {title: "'foreach' binding", desc: "Duplicates elements in the DOM according to bindings to array entries.", url: ko.observable("http://knockoutjs.com/documentation/foreach-binding.html")},
+            {title: "'visible' binding", desc: "Allows an element to be hidden or visible.", url: ko.observable("http://knockoutjs.com/documentation/visible-binding.html")},
+            {title: "'style' binding''", desc: "Applies or removes stylings to DOM elements.", url: ko.observable("http://knockoutjs.com/documentation/style-binding.html")},
+            {title: "'attr' binding", desc: "Sets the attribute value of any DOM element.", url: ko.observable("http://knockoutjs.com/documentation/attr-binding.html")},
+    ]);
+}
+
+
+
+ko.applyBindings(new TutorialViewModel());
+
+</script>
+
+</body>
+</html>

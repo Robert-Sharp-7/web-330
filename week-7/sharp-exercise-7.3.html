@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--
+============================================
+; Title: Assignment 7.3
+; Author: Professor Krasso
+; Date: 08 April 18
+; Modified By: Robert Sharp
+; Description: This program demonstrates 
+; the "foreach" binding in knockout-3.4.2.js
+;===========================================
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>7.3 Knockout 'foreach' Binding</title>
+
+    <!-- Stylesheet - Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <!-- JavaScript Libraries -->
+    <script src="../knockout-3.4.2.js"></script>
+</head>
+<body>
+
+<!-- Professor Krasso's navbar example -->
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <ul class="navbar-nav">
+        <li class="nav-item active">
+            <a href="#" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link">About</a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link">Contact Us</a>
+        </li>
+    </ul>
+</nav>
+
+<div class="container" role="main">
+    <br/><br/>
+
+    <h2>Applying The "foreach" Binding with Textbooks</h2>
+
+    <!--table of titled and priced textbooks-->
+    <table class="table table-light table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+
+        <tbody data-bind="foreach: textbooks">
+            <!-- data is bound to the price and title properties in the observable array-->
+            <tr>
+                <td data-bind="text: title"></td>
+                <td data-bind="text: price"></td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <br/>
+
+</div>
+<script>
+
+    function TextbookViewModel() {
+        //observable properties match the bound data within the HTML
+        this.textbooks = ko.observableArray([
+            {title: "Art 101", price: 99.99},
+            {title: "Art 202", price: 110.99},
+            {title: "Art 303", price: 199.99},
+            {title: "Spanish 101", price: 99.99},
+            {title: "Spanish 202", price: 110.99},
+        ]);
+    }
+    //updating the array would update the elements in the DOM
+    ko.applyBindings(new TextbookViewModel());
+</script>
+
+</body>
+</html>
